@@ -22,7 +22,7 @@ public static Intent newIntent(Context packageContext, UUID crimeId){
 
 首先还是当然还是需要启动 CrimeActivity。在 CrimeListFragment 的 CrimeHolder 中启动。
 
-**CrimeListFragment.class**
+**CrimeListFragment.java**
 ```
 @Override
 public void onClick(View view) {
@@ -32,7 +32,7 @@ public void onClick(View view) {
 ```
 在 CrimeActivity 中得到 id 并传给 CrimeFragment。
 
-**CrimeActivity.class**
+**CrimeActivity.java**
 ```
  @Override
 protected Fragment createFragment() {
@@ -42,7 +42,7 @@ protected Fragment createFragment() {
 ```
 CrimeFragment 存放 id 到 argument并创建 fragment。
 
-**CrimeFragmen.classt**
+**CrimeFragmen.java**
 ```
 private static final String ARG_CRIME_ID = "crime_id";
 public static CrimeFragment newInstance (UUID crimeId){
@@ -56,7 +56,7 @@ public static CrimeFragment newInstance (UUID crimeId){
 ```
 在 onCreat(Bundle savedInstanceState) 中得到
 
-**CrimeFragment.class**
+**CrimeFragment.java**
 ```
 @Override
 public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 其实我们修改后，数据已经保存到模型层了，我们只需要刷新 RecycleView 就可以了。调用 notifyDataSetChanged() 就行了。这里需要注意的是，要在 onResume() 方法中写。
 
-**CrimeListFragment.class**
+**CrimeListFragment.java**
 ```
  @Override
 public void onResume() {
@@ -93,7 +93,7 @@ private void updateUI() {
 
 增加一个变量：
 
-**CrimeListFragment.class**
+**CrimeListFragment.java**
 ```
 //保存位置变量
 private int mPosition;
